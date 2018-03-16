@@ -13,13 +13,10 @@ public class HamletParser {
 
     private HamletParser hamletParser;
     private String hamletData;
-    private String changedNames;
-    private String input;
+    private String inputText;
 
     public HamletParser(){
         this.hamletData = loadFile();
-       // this.hamletParser = new HamletParser();
-       // this.input = hamletParser.changeHamletToLeon();
     }
 
     private String loadFile(){
@@ -41,19 +38,19 @@ public class HamletParser {
         return result.toString();
     }
 
-    public boolean findHoratio(){
-        if (hamletData.contains("HORATIO") || hamletData.contains("Horatio"));
+    public boolean findHoratio(String inputText){
+        if (inputText.contains("HORATIO") || inputText.contains("Horatio"));
         return true;
     }
 
-    public boolean findHamlet(String input){
-        if (hamletData.contains("HAMLET") || hamletData.contains("Hamlet"));
+    public boolean findHamlet(String inputText){
+        if (inputText.contains("HAMLET") || inputText.contains("Hamlet"));
         return true;
     }
 
-    public String changeHoratioToTariq(){
+    public String changeHoratioToTariq(String inputText){
 
-        String str = hamletData;
+        String str = inputText;
         Pattern p = Pattern.compile("\\bHoratio\\b");
         Matcher m = p.matcher(str);
         String capital = m.replaceAll("Tariq");
@@ -65,9 +62,9 @@ public class HamletParser {
         return result;
     }
 
-    public String changeHamletToLeon(){
+    public String changeHamletToLeon(String inputText){
 
-        String str = hamletData;
+        String str = inputText;
         Pattern p = Pattern.compile("\\bHamlet\\b");
         Matcher m = p.matcher(str);
         String capital = m.replaceAll("Leon");
@@ -79,8 +76,8 @@ public class HamletParser {
         return result;
     }
 
-    public String changeBothNames(){
-        String str = hamletData;
+    public String changeBothNames(String inputText){
+        String str = inputText;
         Pattern p = Pattern.compile("\\bHoratio\\b");
         Matcher m = p.matcher(str);
         String capital = m.replaceAll("Tariq");
@@ -107,4 +104,5 @@ public class HamletParser {
         return hamletData;
     }
 
-}
+
+    }

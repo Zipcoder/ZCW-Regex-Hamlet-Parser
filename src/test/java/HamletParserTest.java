@@ -19,29 +19,38 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
-        System.out.println(hamletParser.changeHamletToLeon());
+        String expected = "Leon";
+        String actual = hamletParser.changeHamletToLeon("Hamlet");
+        assertEquals(expected, actual);
     }
 
 
     @Test
     public void testChangeHoratioToTariq() {
-        System.out.println(hamletParser.changeHoratioToTariq());
-
+        String expected = "Tariq";
+       String actual = hamletParser.changeHoratioToTariq("Horatio");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testFindHoratio() {
-        hamletParser.findHamlet(hamletParser.changeHamletToLeon());
-        assertTrue(true);
+        boolean expected = true;
+        boolean actual = hamletParser.findHoratio("This is a string with the name Horatio in it");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testFindHamlet() {
-        hamletParser.findHoratio();
+        boolean expected = true;
+        boolean actual = hamletParser.findHamlet("This is a string with the name Hamlet in it");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testChangedBothNames(){
-        System.out.println(hamletParser.changeBothNames());
+        String expected = "Tariq and Leon are friends";
+        String actual = hamletParser.changeBothNames("Horatio and Hamlet are friends");
+        assertEquals(expected, actual);
+
     }
 }
