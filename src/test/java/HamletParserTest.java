@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +16,15 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
+        // Given
+        String inputString = "Change Hamlet to Leon";
+        String expectedString = "Change Leon to Leon";
+        hamletParser = new HamletParser(inputString);
+        // When
+        hamletParser.changeHamletToLeon();
+        String actualString = hamletParser.getHamletData();
+        // Then
+        Assert.assertEquals(expectedString, actualString);
     }
 
     @Test
