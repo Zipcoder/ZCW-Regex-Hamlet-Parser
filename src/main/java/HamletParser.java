@@ -16,8 +16,8 @@ public class HamletParser {
         hamletData = loadFile();
     }
 
-    private static String loadFile(){
-        ClassLoader classLoader = HamletParser.class.getClassLoader();
+    public String loadFile(){
+        ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("hamlet.txt").getFile());
         StringBuilder result = new StringBuilder("");
         try(Scanner scanner = new Scanner(file)){
@@ -54,7 +54,7 @@ public class HamletParser {
         return matcher.appendTail(sb).toString();
     }
 
-    private static void changeEverythingAndPutInFile() throws IOException {
+    private void changeEverythingAndPutInFile() throws IOException {
         String fixedFile = changeHamletToLeon(changeHoratioToTariq(hamletData));
         FileWriter fileWriter = new FileWriter("src/main/resources/zipcodeHamlet.txt", true);
         fileWriter.write(fixedFile);
@@ -62,7 +62,8 @@ public class HamletParser {
     }
 
     public static void main(String[] args) throws IOException {
-        changeEverythingAndPutInFile();
+        HamletParser h = new HamletParser();
+        h.changeEverythingAndPutInFile();
     }
 
 }

@@ -29,4 +29,10 @@ public class HamletParserTest {
         Assert.assertEquals(expected, actual);
     }
 
+//    @Test
+//    public void testLoadFile() {
+//        String expected = ;
+//        String actual = hamletParser.loadFile();
+//    }
+
 }
