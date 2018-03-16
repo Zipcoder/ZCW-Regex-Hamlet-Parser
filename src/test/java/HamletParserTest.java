@@ -1,7 +1,13 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import static org.junit.Assert.*;
+
 
 public class HamletParserTest {
     private String hamletText;
@@ -14,11 +20,22 @@ public class HamletParserTest {
     }
 
     @Test
-    public void testChangeHamletToLeon() {
+    public void testChangeHamletToLeon1()
+    {
+        HamletParser hamletParser = new HamletParser();
+
+        String expected = ;
+
+        String actual = hamletParser.replaceHamletWithLeon();
+
+        Assert.assertEquals(expected, actual);
+
     }
 
     @Test
-    public void testChangeHoratioToTariq() {
+    public void testChangeHoratioToTariq()
+    {
+
     }
 
     @Test
