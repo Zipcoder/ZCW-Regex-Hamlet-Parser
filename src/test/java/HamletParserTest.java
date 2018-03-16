@@ -11,7 +11,6 @@ public class HamletParserTest {
     @Before
     public void setUp() {
         this.hamletParser = new HamletParser();
-        this.hamletText = hamletParser.getHamletData();
     }
 
     @Test

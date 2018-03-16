@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -9,14 +10,14 @@ import java.util.regex.Pattern;
  */
 public class HamletParser {
 
-    private String hamletData;
+    private static String hamletData;
 
     public HamletParser(){
         this.hamletData = loadFile();
     }
 
-    private String loadFile(){
-        ClassLoader classLoader = getClass().getClassLoader();
+    private static String loadFile(){
+        ClassLoader classLoader = HamletParser.class.getClassLoader();
         File file = new File(classLoader.getResource("hamlet.txt").getFile());
         StringBuilder result = new StringBuilder("");
         try(Scanner scanner = new Scanner(file)){
@@ -31,11 +32,7 @@ public class HamletParser {
         return result.toString();
     }
 
-    public String getHamletData(){
-        return hamletData;
-    }
-
-    public String changeHamletToLeon(String string) {
+    public static String changeHamletToLeon(String string) {
         StringBuffer sb = new StringBuffer();
         String hamletPattern = "([Hh][Aa][Mm][Ll][Ee][Tt])";
         Pattern pattern = Pattern.compile(hamletPattern);
@@ -46,7 +43,7 @@ public class HamletParser {
         return matcher.appendTail(sb).toString();
     }
 
-    public String changeHoratioToTariq(String string) {
+    public static String changeHoratioToTariq(String string) {
         StringBuffer sb = new StringBuffer();
         String horatioPattern = "([Hh][Oo][Rr][Aa][Tt][Ii][Oo])";
         Pattern pattern = Pattern.compile(horatioPattern);
@@ -54,7 +51,19 @@ public class HamletParser {
         while (matcher.find()) {
             if (string != null) matcher.appendReplacement(sb, "Tariq");
         }
+        System.out.println(sb);
         return matcher.appendTail(sb).toString();
+    }
+
+    private static void changeEverythingAndPutInFile() throws IOException {
+        String fixedFile = changeHamletToLeon(changeHoratioToTariq(hamletData));
+        FileWriter fileWriter = new FileWriter("src/main/resources/zipcodeHamlet.txt", true);
+        fileWriter.write(fixedFile);
+        fileWriter.close();
+    }
+
+    public static void main(String[] args) throws IOException {
+        changeEverythingAndPutInFile();
     }
 
 }
