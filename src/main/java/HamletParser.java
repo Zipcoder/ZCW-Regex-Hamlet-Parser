@@ -54,6 +54,43 @@ public class HamletParser {
         hamletData = HamletMatcher.replaceAll(LeonString);
     }
 
+    public void changeHoratioToTariq() {
+        String HoratioString = "Horatio";
+        String TariqString = "Tariq";
+
+        Pattern HoratioPattern = Pattern.compile(HoratioString);
+        Matcher HoratioMatcher = HoratioPattern.matcher(hamletData);
+        hamletData = HoratioMatcher.replaceAll(TariqString);
+    }
+
+    public boolean findHoratio() {
+        boolean findHoratio = false;
+
+        String HoratioString = "Horatio";
+        Pattern HoratioPattern = Pattern.compile(HoratioString);
+        Matcher HoratioMatcher = HoratioPattern.matcher(hamletData);
+
+        if (HoratioMatcher.find()) {
+            findHoratio = true;
+        }
+
+        return findHoratio;
+    }
+
+    public boolean findHamlet() {
+        boolean findHamlet = false;
+
+        String HamletString = "Horatio";
+        Pattern HamletPattern = Pattern.compile(HamletString);
+        Matcher HamletMatcher = HamletPattern.matcher(hamletData);
+
+        if (HamletMatcher.find()) {
+            findHamlet = true;
+        }
+
+        return findHamlet;
+    }
+
     public static void main(String[] args) {
         String inputString = "Change hamleta;ldsfjkhamletHamlet and Hamlet and also Hamlet to Leon";
         HamletParser hamletParser = new HamletParser(inputString);

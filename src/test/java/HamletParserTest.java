@@ -29,13 +29,36 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHoratioToTariq() {
+        // Given
+        String inputString = "Change Horatio to Tariq";
+        String expectedString = "Change Tariq to Tariq";
+        hamletParser = new HamletParser(inputString);
+        // When
+        hamletParser.changeHoratioToTariq();
+        String actualString = hamletParser.getHamletData();
+        // Then
+        Assert.assertEquals(expectedString, actualString);
     }
 
     @Test
     public void testFindHoratio() {
+        // Given
+        boolean expectedFindHoratio = true;
+        // When
+        hamletParser = new HamletParser();
+        boolean actualFindHoratio = hamletParser.findHoratio();
+        // Then
+        Assert.assertEquals(expectedFindHoratio, actualFindHoratio);
     }
 
     @Test
     public void testFindHamlet() {
+        // Given
+        boolean expectedFindHamlet = true;
+        // When
+        hamletParser = new HamletParser();
+        boolean actualFindHamlet = hamletParser.findHamlet();
+        // Then
+        Assert.assertEquals(expectedFindHamlet, actualFindHamlet);
     }
 }
