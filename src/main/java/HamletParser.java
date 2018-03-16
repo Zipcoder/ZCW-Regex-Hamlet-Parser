@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * Created by thook on 10/7/15.
@@ -36,4 +37,33 @@ public class HamletParser {
         return hamletData;
     }
 
+    public boolean checkHamlet(){
+        if (getHamletData().contains("HAMLET")) return true;
+        return false;
+    }
+
+    public boolean checkLeon(){
+        if (getHamletData().contains("LEON")) return true;
+        return false;
+    }
+
+    public boolean checkHoratio(){
+        if (getHamletData().contains("HORATIO")) return true;
+        return false;
+    }
+
+    public boolean checkTariq(){
+        if (getHamletData().contains("TARIQ")) return true;
+        return false;
+    }
+
+    public void changeHamletToLeon(){
+        Pattern hamlet = Pattern.compile("(HAMLET)");
+        this.hamletData = hamlet.matcher(hamletData).replaceAll("LEON");
+    }
+
+    public void changeHoratioToTariq(){
+        Pattern hamlet = Pattern.compile("(HORATIO)");
+        this.hamletData = hamlet.matcher(hamletData).replaceAll("TARIQ");
+    }
 }
