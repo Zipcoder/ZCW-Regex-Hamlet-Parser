@@ -1,7 +1,7 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 public class HamletParserTest {
     private String hamletText;
@@ -15,17 +15,17 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
+        String input  = "Hamlet, HAMLET, HAMLET, hamlet, hamlet!";
+        String expected = "Leon, Leon, Leon, Leon, Leon!";
+        String actual = hamletParser.changeHamletToLeon(input);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testChangeHoratioToTariq() {
-    }
-
-    @Test
-    public void testFindHoratio() {
-    }
-
-    @Test
-    public void testFindHamlet() {
+        String input = "HORATIO, HORATIO, Horatio, horatio!";
+        String expected = "Tariq, Tariq, Tariq, Tariq!";
+        String actual = hamletParser.changeHoratioToTariq(input);
+        Assert.assertEquals(expected, actual);
     }
 }
