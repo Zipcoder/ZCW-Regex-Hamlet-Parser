@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,17 +16,53 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
+        HamletParser hamletParser = new HamletParser();
+        String preChanges = hamletParser.getHamletData();
+        hamletParser.changeHamletToLeon();
+        String postChanges = hamletParser.getHamletData();
+        Assert.assertNotEquals(preChanges, postChanges);
     }
 
     @Test
     public void testChangeHoratioToTariq() {
+        HamletParser hamletParser = new HamletParser();
+        String preChanges = hamletParser.getHamletData();
+        hamletParser.changeHoratioToTariq();
+        String postChanges = hamletParser.getHamletData();
+        Assert.assertNotEquals(preChanges, postChanges);
     }
 
     @Test
-    public void testFindHoratio() {
+    public void testFindHoratioBeforeChange(){
+        HamletParser hamletParser = new HamletParser();
+        Assert.assertTrue(hamletParser.contains("Horatio") || hamletParser.contains("HORATIO"));
     }
 
     @Test
-    public void testFindHamlet() {
+    public void testFindHoratioAfterChange(){
+        HamletParser hamletParser = new HamletParser();
+        hamletParser.changeHoratioToTariq();
+        Assert.assertFalse(hamletParser.contains("Horatio") || hamletParser.contains("HORATIO"));
+    }
+
+    @Test
+    public void testFineHamletBeforeChange(){
+        HamletParser hamletParser = new HamletParser();
+        Assert.assertTrue(hamletParser.contains("Hamlet") || hamletParser.contains("HAMLET"));
+    }
+    @Test
+    public void testFineHamletAfterChange(){
+        HamletParser hamletParser = new HamletParser();
+        hamletParser.changeHamletToLeon();
+        Assert.assertFalse(hamletParser.contains("Hamlet") || hamletParser.contains("HAMLET"));
+    }
+
+    @Test
+    public void testChangeBothNames(){
+        HamletParser hamletParser = new HamletParser();
+        String preChanges = hamletParser.getHamletData();
+        hamletParser.replaceBothNames();
+        String postChanges = hamletParser.getHamletData();
+        Assert.assertNotEquals(preChanges, postChanges);
     }
 }
