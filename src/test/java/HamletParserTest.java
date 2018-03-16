@@ -30,8 +30,8 @@ public class HamletParserTest {
     public void testChangeHoratioToTariq() {
 
         String inputTest = "HORATIO: Horatio Horatios Horatio's";
-        String expected = "TARIQ: Tarig Tariqs Tariq's";
-
+        String expected = "TARIQ: Tariq Tariqs Tariq's";
+        Assert.assertEquals(expected, hamletParser.changeHoratioToTariq(inputTest));
     }
 
     @Test
