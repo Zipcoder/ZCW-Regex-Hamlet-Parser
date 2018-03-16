@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +16,7 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
+
     }
 
     @Test
@@ -23,9 +25,23 @@ public class HamletParserTest {
 
     @Test
     public void testFindHoratio() {
+
     }
 
     @Test
     public void testFindHamlet() {
     }
+
+    @Test
+    public void testMatchHoratio() {
+
+
+    }
+
+    @Test
+    public void testMatchHamlet() {
+
+    }
+
+
 }
