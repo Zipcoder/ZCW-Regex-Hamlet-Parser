@@ -18,14 +18,15 @@ public class HamletParser {
     Pattern hamletUpperPattern = Pattern.compile("HAMLET");
     Pattern horatioUpperPattern = Pattern.compile("HORATIO");
 
-    Matcher hamletLowerMatcher = hamletLowerPattern.matcher("hamlet.txt");
-    Matcher horatioLowerMatcher = horatioLowerPattern.matcher("hamlet.txt");
+    Matcher hamletLowerMatcher = hamletLowerPattern.matcher(hamletData);
+    Matcher horatioLowerMatcher = horatioLowerPattern.matcher(hamletData);
 
-    Matcher hamletUpperMatcher = hamletUpperPattern.matcher("hamlet.txt");
-    Matcher horatioUpperMatcher = horatioUpperPattern.matcher("hamlet.txt");
+    Matcher hamletUpperMatcher = hamletUpperPattern.matcher(hamletData);
+    Matcher horatioUpperMatcher = horatioUpperPattern.matcher(hamletData);
 
 
     public HamletParser(){
+
         this.hamletData = loadFile();
     }
 
@@ -52,6 +53,22 @@ public class HamletParser {
 
         return hamletData;
     }
+
+    public void changeHamletToLeon(String string) {
+
+        hamletData = hamletLowerMatcher.replaceAll("Leon");
+        hamletData = hamletUpperMatcher.replaceAll("LEON");
+    }
+
+    public void changeHoratioToTariq(String string) {
+        hamletData = horatioLowerMatcher.replaceAll("Tariq");
+        hamletData = horatioUpperMatcher.replaceAll("TARIQ");
+    }
+
+    public boolean findMatch(String regExS, String hamletData) {
+        return false;
+    }
+
 
 
 }
