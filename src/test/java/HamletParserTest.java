@@ -24,17 +24,45 @@ public class HamletParserTest {
     {
         HamletParser hamletParser = new HamletParser();
 
-        String expected = ;
+        String input = "Hamlet.HAMLET.";
 
-        String actual = hamletParser.replaceHamletWithLeon();
+        String expected = "Leon.LEON";
+
+        String actual = hamletParser.replaceHamletWithLeon(input);
 
         Assert.assertEquals(expected, actual);
 
     }
 
     @Test
+    public void testChangeHamletToLeon2()
+    {
+        HamletParser hamletParser = new HamletParser();
+
+        String testString = "This is HAMLET.";
+
+        String expected = "This is LEON.";
+
+        String actual = hamletParser.replaceHamletWithLeon(testString);
+
+        Assert.assertEquals(expected, actual);
+
+    }
+
+
+
+    @Test
     public void testChangeHoratioToTariq()
     {
+        HamletParser hamletParser = new HamletParser();
+
+        String testString = "This is Horatio.";
+
+        String expected = "This is Tariq.";
+
+        String actual = hamletParser.replaceHoratioWithTariq(testString);
+
+        Assert.assertEquals(expected, actual);
 
     }
 

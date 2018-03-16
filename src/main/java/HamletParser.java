@@ -10,71 +10,90 @@ import java.util.regex.Pattern;
 public class HamletParser {
 
     private String hamletData;
+//    private Pattern pattern;
+//    private Matcher matcher;
 
-    public HamletParser(){
+    public HamletParser() {
         this.hamletData = loadFile();
+
     }
 
-    private String loadFile(){
+
+    private String loadFile() {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("hamlet.txt").getFile());
         StringBuilder result = new StringBuilder("");
 
-        try(Scanner scanner = new Scanner(file)){
-            while(scanner.hasNextLine()){
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 result.append(line).append("\n");
             }
 
             scanner.close();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
         return result.toString();
     }
 
-    public String replaceHamletWithLeon()
-    {
-//        HamletParser hamletParser = new HamletParser();
-//        String input = hamletData;
-//
-//        Pattern p1 = Pattern.compile("\\bHamlet\\b");
-//        Matcher m1 = p1.matcher(input);
-//        String replaceHamletWithLeon = m1.replaceAll("Leon");
-//
-//
-//        String capitalInput = hamletData;
-//        Pattern p2 = Pattern.compile("\\bHAMLET\\b");
-//        Matcher m2 = p2.matcher(capitalInput);
-//        String replaceHamletWithLeonCapital = m2.replaceAll("LEON");
-//
-//        return hamletData;
+
+    public String replaceHamletWithLeon(String input) {
+
+        Pattern patternLowerCase = Pattern.compile("Hamlet");
+        Matcher m1 = patternLowerCase.matcher(input);
+        String result1 = m1.replaceAll("Leon");
+
+        Pattern patternUpperCase = Pattern.compile("HAMLET");
+        Matcher m2 = patternUpperCase.matcher(result1);
+        String result2 = m2.replaceAll("LEON");
+
+        return result2;
+
     }
 
-    public String replaceHiratioWithTariq()
+    public String replaceHoratioWithTariq(String input) {
+        Pattern patternLowerCase = Pattern.compile("Horatio");
+        Matcher m1 = patternLowerCase.matcher(input);
+        String result1 = m1.replaceAll("Tariq");
+
+        Pattern patternUpperCase = Pattern.compile("HORATIO");
+        Matcher m2 = patternUpperCase.matcher(result1);
+        String result2 = m2.replaceAll("TARIQ");
+
+        return result2;
+
+    }
+
+    public boolean findHamlet(String input)
     {
-//        HamletParser hamletParser = new HamletParser();
-//        String input = hamletData;
-//
-//        Pattern p3 = Pattern.compile("\\bHiratio\\b");
-//        Matcher m3 = p3.matcher(input);
-//        String replaceHamletWithLeon = m3.replaceAll("Tariq");
-//
-//
-//        String capitalInput = hamletData;
-//        Pattern p4 = Pattern.compile("\\bHIRATIO\\b");
-//        Matcher m4 = p4.matcher(capitalInput);
-//        String replaceHamletWithLeonCapital = m4.replaceAll("TARIQ");
-//
-//        return hamletData;
+        if (input.contains("Hamlet") || input.contains("HAMLET"))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean findHoratio(String input)
+    {
+        if (input.contains("Horatio") || input.contains("HORATIO"))
+        {
+            return true;
+        }
+
+        return false;
+
     }
 
     public String getHamletData()
     {
-
-
         return hamletData;
     }
+
+
+
+
 
 }
