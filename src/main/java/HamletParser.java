@@ -11,20 +11,6 @@ public class HamletParser {
 
     private String hamletData;
 
-
-    Pattern hamletLowerPattern = Pattern.compile("Hamlet");
-    Pattern horatioLowerPattern = Pattern.compile("Horatio");
-
-    Pattern hamletUpperPattern = Pattern.compile("HAMLET");
-    Pattern horatioUpperPattern = Pattern.compile("HORATIO");
-
-    Matcher hamletLowerMatcher = hamletLowerPattern.matcher(hamletData);
-    Matcher horatioLowerMatcher = horatioLowerPattern.matcher(hamletData);
-
-    Matcher hamletUpperMatcher = hamletUpperPattern.matcher(hamletData);
-    Matcher horatioUpperMatcher = horatioUpperPattern.matcher(hamletData);
-
-
     public HamletParser(){
 
         this.hamletData = loadFile();
@@ -54,19 +40,45 @@ public class HamletParser {
         return hamletData;
     }
 
-    public void changeHamletToLeon(String string) {
-
-        hamletData = hamletLowerMatcher.replaceAll("Leon");
-        hamletData = hamletUpperMatcher.replaceAll("LEON");
+    public String changeText(String string){
+        changeHamletToLeon(string);
+        changeHoratioToTariq(string);
+        return string;
     }
 
-    public void changeHoratioToTariq(String string) {
-        hamletData = horatioLowerMatcher.replaceAll("Tariq");
-        hamletData = horatioUpperMatcher.replaceAll("TARIQ");
+    public String changeHamletToLeon(String string) {
+
+        Pattern hamletLowerPattern = Pattern.compile("Hamlet");
+        Matcher hamletLowerMatcher = hamletLowerPattern.matcher(string);
+        String string1 = hamletLowerMatcher.replaceAll("Leon");
+
+        Pattern hamletUpperPattern = Pattern.compile("HAMLET");
+        Matcher hamletUpperMatcher = hamletUpperPattern.matcher(string1);
+        String string2 = hamletUpperMatcher.replaceAll("LEON");
+        return string2;
     }
 
-    public boolean findMatch(String regExS, String hamletData) {
-        return false;
+    public String changeHoratioToTariq(String string) {
+
+
+        Pattern horatioLowerPattern = Pattern.compile("Horatio");
+        Matcher horatioLowerMatcher = horatioLowerPattern.matcher(string);
+        String string1 = horatioLowerMatcher.replaceAll("Tariq");
+
+        Pattern horatioUpperPattern = Pattern.compile("HORATIO");
+        Matcher horatioUpperMatcher = horatioUpperPattern.matcher(string1);
+        String string2 = horatioUpperMatcher.replaceAll("TARIQ");
+        return string2;
+    }
+
+
+
+    public boolean findMatch(String regEx, String hamletData) {
+
+        if (hamletData.contains(regEx)) return false;
+
+        else { return true; }
+
     }
 
 

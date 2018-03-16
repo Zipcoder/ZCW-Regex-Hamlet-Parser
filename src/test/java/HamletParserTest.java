@@ -23,8 +23,7 @@ public class HamletParserTest {
         String expected = "Leon's hunt hath wrought but many a curse upon thine land.  LEON " +
                 "Doth thou Leon haveth hatched eggs to say about these claims?  Whom soever may Leon harm further?";
 
-        Assert.assertEquals(expected, hamletParser.findMatch());
-
+        Assert.assertEquals(expected, hamletParser.changeHamletToLeon(inputTest));
     }
 
     @Test
@@ -33,31 +32,17 @@ public class HamletParserTest {
         String inputTest = "HORATIO: Horatio Horatios Horatio's";
         String expected = "TARIQ: Tarig Tariqs Tariq's";
 
-
-        Assert.assertEquals(expected, hamletParser.findMatch());
-
     }
 
     @Test
     public void testFindHoratio() {
 
+        Assert.assertTrue(hamletParser.findMatch("Horatio | HORATIO", hamletText));
+
     }
 
     @Test
     public void testFindHamlet() {
+        Assert.assertTrue(hamletParser.findMatch("Hamlet| HAMLET", hamletText));
     }
-
-    @Test
-    public void testMatchHoratio() {
-
-    }
-
-    @Test
-    public void testMatchHamlet() {
-
-    }
-
-
-
-
 }
