@@ -38,32 +38,36 @@ public class HamletParser {
     }
 
     public boolean checkHamlet(){
-        if (getHamletData().contains("HAMLET")) return true;
+        if (getHamletData().contains("HAMLET")||getHamletData().contains("Hamlet")) return true;
         return false;
     }
 
     public boolean checkLeon(){
-        if (getHamletData().contains("LEON")) return true;
+        if (getHamletData().contains("LEON")||getHamletData().contains("Leon")) return true;
         return false;
     }
 
     public boolean checkHoratio(){
-        if (getHamletData().contains("HORATIO")) return true;
+        if (getHamletData().contains("HORATIO")||getHamletData().contains("Horatio")) return true;
         return false;
     }
 
     public boolean checkTariq(){
-        if (getHamletData().contains("TARIQ")) return true;
+        if (getHamletData().contains("TARIQ")||getHamletData().contains("Tariq")) return true;
         return false;
     }
 
     public void changeHamletToLeon(){
         Pattern hamlet = Pattern.compile("(HAMLET)");
         this.hamletData = hamlet.matcher(hamletData).replaceAll("LEON");
+        Pattern hamletlowercase = Pattern.compile("(Hamlet)");
+        this.hamletData = hamletlowercase.matcher(hamletData).replaceAll("Leon");
     }
 
     public void changeHoratioToTariq(){
-        Pattern hamlet = Pattern.compile("(HORATIO)");
-        this.hamletData = hamlet.matcher(hamletData).replaceAll("TARIQ");
+        Pattern horatio = Pattern.compile("(HORATIO)");
+        this.hamletData = horatio.matcher(hamletData).replaceAll("TARIQ");
+        Pattern horatiolowercase = Pattern.compile("(Horatio)");
+        this.hamletData = horatiolowercase.matcher(hamletData).replaceAll("Tariq");
     }
 }

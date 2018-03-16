@@ -34,9 +34,11 @@ public class HamletParserTest {
 
     @Test
     public void testFindHoratio() {
+        Assert.assertTrue(hamletParser.checkHoratio());
     }
 
     @Test
     public void testFindHamlet() {
+        Assert.assertTrue(hamletParser.checkHamlet());
     }
 }
