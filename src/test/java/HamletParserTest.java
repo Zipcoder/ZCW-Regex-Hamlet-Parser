@@ -15,8 +15,8 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
-        String startingString = "Here are some words Hamlet and here are some words Horatio.";
-        String expected = "Here are some words Leon and here are some words Horatio.";
+        String startingString = "Here are some words Hamlet and here are some words Horatio.\nHere are more.";
+        String expected = "Here are some words Leon and here are some words Horatio.\nHere are more.";
         String actual = hamletParser.changeHamletToLeon(startingString);
         Assert.assertEquals(expected, actual);
     }

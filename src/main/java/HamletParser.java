@@ -12,8 +12,8 @@ public class HamletParser {
 
     private static String hamletData;
 
-    public HamletParser(){
-        this.hamletData = loadFile();
+    HamletParser(){
+        hamletData = loadFile();
     }
 
     private static String loadFile(){
@@ -38,7 +38,7 @@ public class HamletParser {
         Pattern pattern = Pattern.compile(hamletPattern);
         Matcher matcher = pattern.matcher(string);
         while (matcher.find()) {
-            if (string != null) matcher.appendReplacement(sb, "Leon");
+            matcher.appendReplacement(sb, "Leon");
         }
         return matcher.appendTail(sb).toString();
     }
@@ -49,9 +49,8 @@ public class HamletParser {
         Pattern pattern = Pattern.compile(horatioPattern);
         Matcher matcher = pattern.matcher(string);
         while (matcher.find()) {
-            if (string != null) matcher.appendReplacement(sb, "Tariq");
+            matcher.appendReplacement(sb, "Tariq");
         }
-        System.out.println(sb);
         return matcher.appendTail(sb).toString();
     }
 
