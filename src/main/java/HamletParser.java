@@ -10,59 +10,65 @@ import java.util.regex.Pattern;
 public class HamletParser {
 
     private String hamletData;
-    private Pattern hamletPattern;
-    private Pattern horatioPattern;
+    private Pattern pattern;
     private Matcher matcher;
 
-    public HamletParser(){
+    public HamletParser() {
         this.hamletData = loadFile();
-        hamletPattern = Pattern.compile("(Hamlet|hamlet|HAMLET)");
-        horatioPattern = Pattern.compile("(Horatio|horatio|HORATIO)");
     }
 
     public void changeHamletToLeon() {
-        matcher = hamletPattern.matcher(hamletData);
-        this.hamletData = matcher.replaceAll("LEON");
+        String hamlet = "(Hamlet|HAMLET)";
+        this.hamletData = change(hamlet, "LEON");
     }
 
     public void changeHoratioToTariq() {
-        matcher = horatioPattern.matcher(hamletData);
-        this.hamletData = matcher.replaceAll("TARIQ");
+        String horatio = "(Horatio|HORATIO)";
+        this.hamletData = change(horatio, "TARIQ");
     }
 
     public boolean findHoratio() {
-        matcher = horatioPattern.matcher(hamletData);
-        return matcher.find();
-
+        String horatio = "(Horatio|HORATIO)";
+        return find(horatio);
     }
 
     public boolean findHamlet() {
-        matcher = hamletPattern.matcher(hamletData);
-        return matcher.find();
-
+        String hamlet = "(Hamlet|HAMLET)";
+        return find(hamlet);
     }
 
+    private boolean find(String aString) {
+        pattern = Pattern.compile(aString);
+        matcher = pattern.matcher(hamletData);
+        return matcher.find();
+    }
 
-    private String loadFile(){
+    private String change(String original, String convertTo) {
+        pattern = Pattern.compile(original);
+        matcher = pattern.matcher(hamletData);
+        return matcher.replaceAll(convertTo);
+    }
+
+    private String loadFile() {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("hamlet.txt").getFile());
         StringBuilder result = new StringBuilder("");
 
-        try(Scanner scanner = new Scanner(file)){
-            while(scanner.hasNextLine()){
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 result.append(line).append("\n");
             }
 
             scanner.close();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
         return result.toString();
     }
 
-    public String getHamletData(){
+    public String getHamletData() {
         return hamletData;
     }
 
