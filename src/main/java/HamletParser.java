@@ -56,6 +56,7 @@ public class HamletParser {
         Matcher hamletUpperMatcher = hamletUpperPattern.matcher(string1);
         String string2 = hamletUpperMatcher.replaceAll("LEON");
         return string2;
+
     }
 
     public String changeHoratioToTariq(String string) {
@@ -69,6 +70,7 @@ public class HamletParser {
         Matcher horatioUpperMatcher = horatioUpperPattern.matcher(string1);
         String string2 = horatioUpperMatcher.replaceAll("TARIQ");
         return string2;
+
     }
 
 
