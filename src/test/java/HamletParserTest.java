@@ -24,9 +24,9 @@ public class HamletParserTest {
     {
         HamletParser hamletParser = new HamletParser();
 
-        String input = "Hamlet.HAMLET.";
+        String input = "This is Hamlet.";
 
-        String expected = "Leon.LEON";
+        String expected = "This is Leon.";
 
         String actual = hamletParser.replaceHamletWithLeon(input);
 
@@ -67,10 +67,37 @@ public class HamletParserTest {
     }
 
     @Test
-    public void testFindHoratio() {
+    public void testFindHoratio1()
+    {
+        boolean expected = true;
+        boolean actual = hamletParser.findHoratio("Horatio is here");
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void testFindHamlet() {
+    public void testFindHoratio2()
+    {
+        boolean expected = true;
+        boolean actual = hamletParser.findHoratio("HORATIO is here");
+        Assert.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void testFindHamlet1()
+    {
+        boolean expected = true;
+        boolean actual = hamletParser.findHamlet("Hamlet is here");
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void testFindHamlet2()
+    {
+        boolean expected = true;
+        boolean actual = hamletParser.findHamlet("HAMLET is here");
+        Assert.assertEquals(expected, actual);
+
     }
 }
