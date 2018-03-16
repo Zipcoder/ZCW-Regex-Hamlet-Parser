@@ -47,7 +47,6 @@ public class HamletParser {
             Pattern p =  Pattern.compile(this.patterns[i]);
             Matcher matcher = p.matcher(outPut);
             outPut = matcher.replaceAll(this.replacements[i]);
-
         }
         return outPut;
     }
