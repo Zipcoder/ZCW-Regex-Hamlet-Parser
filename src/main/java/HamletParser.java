@@ -42,21 +42,31 @@ public class HamletParser {
     }
 
     private void hamletChanger(){
-        Pattern hamletPatternLowerCase = Pattern.compile("Hamlet");
-        Matcher hamletMatcherLowerCase = hamletPatternLowerCase.matcher(hamletData);
-        hamletData = hamletMatcherLowerCase.replaceAll("Leon");
-        Pattern hamletPatternUpperCase = Pattern.compile("HAMLET");
-        Matcher hamletMatcherUpperCase = hamletPatternUpperCase.matcher(hamletData);
-        hamletData = hamletMatcherUpperCase.replaceAll("LEON");
+//        Pattern hamletPatternLowerCase = Pattern.compile("Hamlet");
+//        Matcher hamletMatcherLowerCase = hamletPatternLowerCase.matcher(hamletData);
+//        hamletData = hamletMatcherLowerCase.replaceAll("Leon");
+//        Pattern hamletPatternUpperCase = Pattern.compile("HAMLET");
+//        Matcher hamletMatcherUpperCase = hamletPatternUpperCase.matcher(hamletData);
+//        hamletData = hamletMatcherUpperCase.replaceAll("LEON");
+        changer("Hamlet", "Leon");
+        changer("HAMLET", "LEON ");
     }
 
     private void horatioChanger(){
-        Pattern horatioPatterLowerCase = Pattern.compile("Horatio");
-        Matcher horatioMatcherLowerCase = horatioPatterLowerCase.matcher(hamletData);
-        hamletData = horatioMatcherLowerCase.replaceAll("Tariq");
-        Pattern horatioPatterUpperCase = Pattern.compile("HORATIO");
-        Matcher horatioMatcherUpperCase = horatioPatterUpperCase.matcher(hamletData);
-        hamletData = horatioMatcherUpperCase.replaceAll("TARIQ");
+//        Pattern horatioPatterLowerCase = Pattern.compile("Horatio");
+//        Matcher horatioMatcherLowerCase = horatioPatterLowerCase.matcher(hamletData);
+//        hamletData = horatioMatcherLowerCase.replaceAll("Tariq");
+//        Pattern horatioPatterUpperCase = Pattern.compile("HORATIO");
+//        Matcher horatioMatcherUpperCase = horatioPatterUpperCase.matcher(hamletData);
+//        hamletData = horatioMatcherUpperCase.replaceAll("TARIQ");
+        changer("Horatio", "Tariq");
+        changer("HORATIO", "TARIQ");
+    }
+
+    public void changer(String stringToChange, String stringToBecome){
+        Pattern pattern = Pattern.compile(stringToChange);
+        Matcher matcher = pattern.matcher(hamletData);
+        hamletData = matcher.replaceAll(stringToBecome);
     }
 
     public String getHamletData(){
