@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by thook on 10/7/15.
@@ -8,6 +10,8 @@ import java.util.Scanner;
 public class HamletParser {
 
     private String hamletData;
+    public int counter = 0;
+
 
     public HamletParser(){
         this.hamletData = loadFile();
@@ -31,9 +35,69 @@ public class HamletParser {
 
         return result.toString();
     }
-
     public String getHamletData(){
         return hamletData;
     }
 
+
+    public String changeHamletToLeon(String text) {
+        Pattern replace = Pattern.compile("Hamlet");
+        Matcher regexMatcher = replace.matcher(text);
+        String joe = regexMatcher.replaceAll("Leon");
+
+        Pattern replace1 = Pattern.compile("HAMLET");
+        Matcher regexMatcher1 = replace1.matcher(joe);
+        String garrett = regexMatcher1.replaceAll("LEON");
+
+        return garrett;
+    }
+
+
+    public String changeHoratioToTariq(String text) {
+
+        Pattern replace = Pattern.compile("Horatio");
+        Matcher regexMatcher = replace.matcher(text);
+        String joe = regexMatcher.replaceAll("Tariq");
+
+        Pattern replace1 = Pattern.compile("HORATIO");
+        Matcher regexMatcher1 = replace1.matcher(joe);
+        String joe1 = regexMatcher1.replaceAll("TARIQ");
+
+
+        return joe1;
+
+    }
+
+    public String changeAll(String text){
+       return changeHamletToLeon(changeHoratioToTariq(text));
+
+    }
+
+
+    public int findHoratio() {
+        return findMatch("[Hh][Oo][Rr][Aa][Tt][Ii][Oo]",hamletData);
+        }
+
+
+    public int findHamlet () {
+        return findMatch("[Hh][Aa][Mm][Ll][Ee][Tt]", hamletData);
+
+    }
+
+    public int findMatch(String regexStatement, String text) {
+        Pattern checkRegex = Pattern.compile(regexStatement);
+        Matcher regexMatcher = checkRegex.matcher(text);
+
+        while (regexMatcher.find()) {
+            counter++;
+        }
+        return counter;
+
+    }
 }
+
+
+
+
+
+
