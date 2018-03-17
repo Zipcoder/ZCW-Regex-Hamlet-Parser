@@ -41,13 +41,54 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHoratioToTariq() {
+        String sentence = "Horatio hates cowboy fans and will kill them all";
+        HamletParser hamletParser = new HamletParser(sentence);
+        String expected = "Tariq hates cowboy fans and will kill them all";
+        String actual = hamletParser.changeHoratioToTariq(sentence);
+        Assert.assertEquals(expected, actual);
+
     }
+    @Test
+    public void testChangeHoratioToTariq2() {
+        String sentence = "Horatio loves the eagles horatio was happy when the eagles won the superbowl";
+        HamletParser hamletParser = new HamletParser(sentence);
+        String expected = "Tariq loves the eagles Tariq was happy when the eagles won the superbowl";
+        String actual = hamletParser.changeHoratioToTariq(sentence);
+        Assert.assertEquals(expected, actual);
+    }
+
 
     @Test
     public void testFindHoratio() {
+        //Given
+        boolean expected = true;
+
+        //when
+        hamletParser = new HamletParser();
+        boolean actual = hamletParser.findHoratio();
+
+        //Then
+        Assert.assertEquals(expected,actual);
+
+
+
+
+
+
+
+
     }
 
     @Test
     public void testFindHamlet() {
+        //Given
+        boolean expected = true;
+
+        //when
+        hamletParser = new HamletParser();
+        boolean actual = hamletParser.findHoratio();
+
+        //Then
+        Assert.assertEquals(expected,actual);
     }
 }

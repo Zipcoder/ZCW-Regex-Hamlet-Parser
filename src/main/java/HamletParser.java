@@ -20,6 +20,8 @@ public class HamletParser {
         this.hamletData = sentence;
     }
 
+
+
     private String loadFile(){
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("hamlet.txt").getFile());
@@ -66,4 +68,54 @@ public class HamletParser {
         return str2;
     }
 
-}
+    public String changeHoratioToTariq(String sentence){
+
+        Pattern pattern = Pattern.compile("(h|H)oratio");
+
+        String str = sentence;
+
+        Matcher m = pattern.matcher(str);
+
+        String str2 = m.replaceAll("Tariq");
+
+        System.out.println(str2);
+
+        return str2;
+    }
+    public boolean findHoratio() {
+        boolean findHoratio = true;
+
+        String hString = "Horatio";
+        Pattern hPattern = Pattern.compile(hString);
+        Matcher hMatcher = hPattern.matcher(hamletData);
+
+        if (hMatcher.find()) {
+            findHoratio = true;
+        } else {
+            return false;
+        }
+        return findHoratio;
+
+    }
+    public boolean findHamlet() {
+        boolean findHamlet = true;
+
+        String hamString = "Hamlet";
+        Pattern hamPattern = Pattern.compile(hamString);
+        Matcher hamMatcher = hamPattern.matcher(hamletData);
+
+        if (hamMatcher.find()) {
+            findHamlet = true;
+        } else {
+            return false;
+        }
+        return findHamlet;
+    }
+
+
+
+
+
+
+    }
+
