@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,17 +16,43 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
+        // Given
+        HamletParser testHamletParser = new HamletParser();
+        String string = "Hamlet. HAMLET. Hamlet!";
+
+        // When
+        String expected = "Leon. LEON. Leon!";
+        String actual = testHamletParser.changeHamletToLeon(string);
+
+        // Then
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testChangeHoratioToTariq() {
+        // Given
+        HamletParser testHamletParser = new HamletParser();
+        String string = "Horatio. HORATIO. Horatio!";
+
+        // When
+        String expected = "Tariq. TARIQ. Tariq!";
+        String actual = testHamletParser.changeHoratioToTariq(string);
+
+        // Then
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testFindHoratio() {
+        boolean expected = true;
+        boolean actual = hamletParser.findHoratio("Horatio found");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testFindHamlet() {
+        boolean expected = true;
+        boolean actual = hamletParser.findHamlet("Hamlet found");
+        assertEquals(expected, actual);
     }
 }
