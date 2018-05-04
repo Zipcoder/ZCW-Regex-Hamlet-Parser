@@ -17,7 +17,7 @@ public class HamletParserTest {
     @Test
     public void testChangeHamletToLeon() {
         Assert.assertEquals(true, hamletText.contains("Hamlet"));
-        String replaced = hamletParser.changeName();
+        String replaced = hamletParser.changeHamletToLeon();
         Assert.assertEquals(true, replaced.contains("Leon"));
         Assert.assertEquals(false, replaced.contains("Hamlet"));
         Assert.assertEquals(false, replaced.contains("Horatio"));
@@ -26,12 +26,19 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHoratioToTariq() {
-        Assert.assertEquals(true, hamletText.contains("Horatio"));
-        String replaced = hamletParser.changeName();
-        Assert.assertEquals(true, replaced.contains("Tariq"));
-        Assert.assertEquals(true, replaced.contains("Leon"));
-        Assert.assertEquals(false, replaced.contains("Hamlet"));
-        Assert.assertEquals(false, replaced.contains("Horatio"));
+        Assert.assertTrue(hamletText.contains("Horatio"));
+        String replaced = hamletParser.changeHamletToLeon();
+        Assert.assertTrue(replaced.contains("Tariq"));
+        Assert.assertTrue(replaced.contains("Leon"));
+        Assert.assertFalse(replaced.contains("Hamlet"));
+        Assert.assertFalse(replaced.contains("Horatio"));
     }
 
+    @Test
+    public void testChangeName(){
+        Assert.assertTrue(hamletText.contains("Horatio"));
+        hamletText = hamletParser.changeName("Horatio", "Tariq");
+        Assert.assertTrue(hamletText.contains("Tariq"));
+        Assert.assertFalse(hamletText.contains("Horatio"));
+    }
 }
