@@ -17,15 +17,17 @@ public class HamletParserTest {
     @Test
     public void testChangeHamletToLeon() {
         Assert.assertEquals(true, hamletText.contains("Hamlet"));
-        String replaced = hamletParser.changeHamletToLeon();
+        String replaced = hamletParser.changeName();
         Assert.assertEquals(true, replaced.contains("Leon"));
         Assert.assertEquals(false, replaced.contains("Hamlet"));
+        Assert.assertEquals(false, replaced.contains("Horatio"));
+        Assert.assertEquals(true, replaced.contains("Tariq"));
     }
 
     @Test
     public void testChangeHoratioToTariq() {
         Assert.assertEquals(true, hamletText.contains("Horatio"));
-        String replaced = hamletParser.changeHoratioToTariq();
+        String replaced = hamletParser.changeName();
         Assert.assertEquals(true, replaced.contains("Tariq"));
         Assert.assertEquals(true, replaced.contains("Leon"));
         Assert.assertEquals(false, replaced.contains("Hamlet"));

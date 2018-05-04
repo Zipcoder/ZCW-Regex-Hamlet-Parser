@@ -36,18 +36,14 @@ public class HamletParser {
         return result.toString();
     }
 
-    public String changeHamletToLeon(){
+    public String changeName(){
         Pattern pattern1 = Pattern.compile("Hamlet");
         Matcher matcher1 = pattern1.matcher(loadFile());
-        return matcher1.replaceAll("Leon");
+        String leon = matcher1.replaceAll("Leon");
+        matcher1.reset(leon);
+        matcher1.usePattern(Pattern.compile("Horatio"));
+        return matcher1.replaceAll("Tariq");
     }
-
-    public String changeHoratioToTariq(){
-        Pattern pattern2 = Pattern.compile("Horatio");
-        Matcher matcher2 = pattern2.matcher(changeHamletToLeon());
-        return matcher2.replaceAll("Tariq");
-    }
-
 
 
 }
