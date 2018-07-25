@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/gjarant/ZCW-Regex-Hamlet-Parser.svg?branch=master)](https://travis-ci.org/gjarant/ZCW-Regex-Hamlet-Parser)
 # REGEX
 
 ## Directions
